@@ -55,14 +55,14 @@ public class Board {
 
   public boolean checkWin() {
     checkWin = false;
+    
     //check verticals
     for(int cl= 0; cl<board.length; cl++) {
       for(int rw= 0; rw<board.length-3; rw++) {
         if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
           System.out.println("Someone has won");
           checkWin = true;
-          return checkWin;
-          
+          return checkWin;  
         }
       }
     }
@@ -71,18 +71,24 @@ public class Board {
     for(int cl= 0; cl<board.length-3; cl++) {
       for(int rw= 0; rw<board.length; rw++) {
         if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
-          System.out.println("Someone has won");
           checkWin = true;
           return checkWin;
-          
         }
       }
     }
     
     //check pos diagonals
-    
+    for(int rw = 3; rw<board.length;rw++) {
+      for(int cl = 3; cl<board[rw].length;cl++) {
+        if(board[rw][cl] == 'r' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
+          checkWin = true;
+        }
+      }
+    }
     //check neg diagonals
-    
+    if(checkWin) {
+      System.out.println("Someone has won");
+    }
     return checkWin;
   }
 
@@ -91,6 +97,7 @@ public class Board {
     if(board[0][cl] != ' ') {
       checkFull = true;
     }
+  
     return checkFull;
   }
 }
