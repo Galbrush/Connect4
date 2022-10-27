@@ -25,18 +25,18 @@ public class Board {
     return board;
   }
 
-  public void placeCounter(int move) {
+  public void placeCounter(int move, char player) {
     int cl = move -1;
     boolean counterPlaced = false;
 
     for(int rw = board.length-1; rw >= 0; rw--) {
       if(checkFull(cl)) {
         System.out.println("This column is full. Please choose another column.");
-        this.placeCounter(move);
+        this.placeCounter(move, player);
         
       }
       if(board[rw][cl] == ' ') {
-        board[rw][cl] = 'r';
+        board[rw][cl] = player;
         counterPlaced = true;
         break;
       }
@@ -59,7 +59,7 @@ public class Board {
     //check verticals
     for(int cl= 0; cl<board.length; cl++) {
       for(int rw= 0; rw<board.length-3; rw++) {
-        if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
+        if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
           System.out.println("Someone has won");
           checkWin = true;
           return checkWin;  
@@ -70,7 +70,7 @@ public class Board {
     //check verticals
     for(int cl= 0; cl<board.length-3; cl++) {
       for(int rw= 0; rw<board.length; rw++) {
-        if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
+        if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
           checkWin = true;
           return checkWin;
         }
@@ -80,12 +80,14 @@ public class Board {
     //check pos diagonals
     for(int rw = 3; rw<board.length;rw++) {
       for(int cl = 3; cl<board[rw].length;cl++) {
-        if(board[rw][cl] == 'r' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
+        if(board[rw][cl] != ' ' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
           checkWin = true;
         }
       }
     }
     //check neg diagonals
+
+    
     if(checkWin) {
       System.out.println("Someone has won");
     }

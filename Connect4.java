@@ -19,7 +19,8 @@ public class Connect4 {
     display.displayBoard();
     //get player one to place their first counter and display board
     do{
-      board.placeCounter(playerInput.getPlayerInput());
+      board.placeCounter(playerInput.getPlayerInput(), 'r');
+      board.placeCounter(playerInput.getPlayerInput(), 'y');
     } while(!board.checkWin());
     //place counter for computer
     //repeat until one letter appears 4 times next to each other
