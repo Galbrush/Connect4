@@ -20,24 +20,18 @@ public class Display {
  }
 
   //display winning message
-  
+  public void displayWin() {
+    System.out.println("You have won!");
+  }
+
+  public void displayBotWin() {
+    System.out.println("The computer has won! You have lost!");
+  }
 
   //display current board
   public void displayBoard() {
-   /* for (int rw=0; rw<board.length; rw++) {
-      for(int cl=0; cl<board[rw].length; cl++) {
-        char c = board[rw][cl];
-        if(c != 'n') {
-          System.out.print("| " + c + " ");
-        }
-        else{
-          System.out.print("|   ");
-        }
-      }
-    }
-  }*/
-  
-  for(int rw=0; rw<board.length; rw++){
+    
+    for(int rw=0; rw<board.length; rw++){
 			for(int cl=0; cl<board[rw].length; cl++){
 				if(board[rw][cl] == 'r'){
 					System.out.print("| r ");

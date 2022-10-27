@@ -7,6 +7,7 @@ public class Board {
   public char[][] board;
   public int row, col;
   Display display;
+  PlayerInput playerInput;
 
   public Board(int row, int col) {
     this.row = row;
@@ -25,9 +26,8 @@ public class Board {
     return board;
   }
 
-  public void placeCounter(int column) {
-    
-    int cl = column -1;
+  public void placeCounter(int move) {
+    int cl = move -1;
     boolean counterPlaced = false;
 
     for(int rw = board.length-1; rw >= 0; rw--) {
