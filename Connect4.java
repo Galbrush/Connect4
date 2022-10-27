@@ -31,9 +31,17 @@ public class Connect4 {
         board.placeCounter(playerInput.getPlayerInput(), 'y');
       }
       currentMovePlayer++;
-    } while(!board.checkWin());
+    } while(!board.checkWin() || board.checkFullAll());
+
+    if(board.checkWin()) {
+      System.out.println("Someone wins");
+    }
+    if(board.checkFullAll()) {
+      System.out.println("It's a draw!");
+    }
     //place counter for computer
     //repeat until one letter appears 4 times next to each other
+    
     //display winning message
   
 

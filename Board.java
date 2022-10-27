@@ -6,12 +6,13 @@ public class Board {
   public int row, col;
   Display display;
   PlayerInput playerInput;
-  boolean checkWin, checkFull;
+  boolean checkWin, checkFull, checkFullAll;
 
   public Board(int row, int col) {
     this.row = row;
     this.col = col;
     this.board = new char[row][col];
+    this.playerInput = new PlayerInput(this);
     System.out.println("You created a new Board");
     //populate board with empty chars. 
     for(int rw = 0; rw<board.length; rw++){
@@ -32,7 +33,7 @@ public class Board {
     for(int rw = board.length-1; rw >= 0; rw--) {
       if(checkFull(cl)) {
         System.out.println("This column is full. Please choose another column.");
-        this.placeCounter(move, player);
+        this.placeCounter(playerInput.getPlayerInput(), player);
         
       }
       if(board[rw][cl] == ' ') {
@@ -76,8 +77,8 @@ public class Board {
     }
     
     //check pos diagonals
-    for(int rw = 3; rw<board.length-2;rw++) {
-      for(int cl = 3; cl<board[rw].length-2;cl++) {
+    for(int rw = 3; rw<board.length-3;rw++) {
+      for(int cl = 3; cl<board[rw].length-3;cl++) {
         if(board[rw][cl] != ' ' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
           checkWin = true;
         }
@@ -100,4 +101,15 @@ public class Board {
   
     return checkFull;
   }
+
+  public boolean checkFullAll() {
+    checkFullAll = true;
+    for(int cl=0; cl<board[0].length; cl++) {
+      if(!checkFull(cl)) {
+        checkFullAll = false;
+      }
+    }
+    return checkFullAll;
+  }
 }
+
