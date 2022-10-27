@@ -40,9 +40,7 @@ public class Board {
         counterPlaced = true;
         break;
       }
-      else{
-        System.out.println("Something didn't work.");
-      }
+      
       if(!counterPlaced) {
         
       }
@@ -56,7 +54,7 @@ public class Board {
   public boolean checkWin() {
     checkWin = false;
     
-    //check verticals
+    //check vertical
     for(int cl= 0; cl<board.length; cl++) {
       for(int rw= 0; rw<board.length-3; rw++) {
         if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
@@ -67,7 +65,7 @@ public class Board {
       }
     }
     
-    //check verticals
+    //check horizontal
     for(int cl= 0; cl<board.length-3; cl++) {
       for(int rw= 0; rw<board.length; rw++) {
         if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
@@ -78,8 +76,8 @@ public class Board {
     }
     
     //check pos diagonals
-    for(int rw = 3; rw<board.length;rw++) {
-      for(int cl = 3; cl<board[rw].length;cl++) {
+    for(int rw = 3; rw<board.length-2;rw++) {
+      for(int cl = 3; cl<board[rw].length-2;cl++) {
         if(board[rw][cl] != ' ' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
           checkWin = true;
         }
