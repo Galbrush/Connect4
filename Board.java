@@ -8,6 +8,7 @@ public class Board {
   public int row, col;
   Display display;
   PlayerInput playerInput;
+  boolean checkWin;
 
   public Board(int row, int col) {
     this.row = row;
@@ -43,5 +44,26 @@ public class Board {
     //display board
     display = new Display(this);
     display.displayBoard();
+  }
+
+  public boolean checkWin() {
+    checkWin = false;
+    //check verticals
+    for(int cl= 0; cl<board.length; cl++) {
+      for(int rw= 0; rw<board.length-3; rw++) {
+        if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
+          System.out.println("Someone has won");
+          checkWin = true;
+          
+        }
+      }
+    }
+    
+    //check verticals
+
+    //check pos diagonals
+
+    //check neg diagonals
+    return checkWin;
   }
 }
