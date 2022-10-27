@@ -1,5 +1,3 @@
-//Board setup. With a constructor that set's up the board with a n by n board. 
-
 
 public class Board {
 
@@ -8,7 +6,7 @@ public class Board {
   public int row, col;
   Display display;
   PlayerInput playerInput;
-  boolean checkWin;
+  boolean checkWin, checkFull;
 
   public Board(int row, int col) {
     this.row = row;
@@ -32,12 +30,21 @@ public class Board {
     boolean counterPlaced = false;
 
     for(int rw = board.length-1; rw >= 0; rw--) {
+      if(checkFull(cl)) {
+        System.out.println("This column is full. Please choose another column.");
+        this.placeCounter(move);
+        
+      }
       if(board[rw][cl] == ' ') {
         board[rw][cl] = 'r';
+        counterPlaced = true;
         break;
       }
       else{
         System.out.println("Something didn't work.");
+      }
+      if(!counterPlaced) {
+        
       }
     }
   
@@ -54,6 +61,7 @@ public class Board {
         if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
           System.out.println("Someone has won");
           checkWin = true;
+          return checkWin;
           
         }
       }
@@ -65,14 +73,24 @@ public class Board {
         if (board[rw][cl] == 'r' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
           System.out.println("Someone has won");
           checkWin = true;
+          return checkWin;
           
         }
       }
     }
+    
     //check pos diagonals
-
+    
     //check neg diagonals
     
     return checkWin;
+  }
+
+  public boolean checkFull(int cl) {
+    checkFull = false;
+    if(board[0][cl] != ' ') {
+      checkFull = true;
+    }
+    return checkFull;
   }
 }
