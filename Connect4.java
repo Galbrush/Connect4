@@ -5,6 +5,7 @@ public class Connect4 {
   char[] playersArr = {'r', 'y'};
   char currentMovePlayer = 0;
   Player player;
+  BotInput botInput;
   
   
 
@@ -13,6 +14,7 @@ public class Connect4 {
     this.display = new Display(board);
     this.playerInput = new PlayerInput(board);
     this.player = new Player(playersArr[currentMovePlayer]);
+    this.botInput = new BotInput(board);
     playConnect4();
   }
 
@@ -28,7 +30,7 @@ public class Connect4 {
         board.placeCounter(playerInput.getPlayerInput(), 'r');
       }
       else {
-        board.placeCounter(playerInput.getPlayerInput(), 'y');
+        board.placeCounter(botInput.getBotInput(), 'y');
       }
       currentMovePlayer++;
     } while(!board.checkWin() || board.checkFullAll());

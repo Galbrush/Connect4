@@ -49,7 +49,7 @@ public class Board {
     }
     //if this didn't work - show an error message
     if(!counterPlaced) {
-        System.out.println("Something went wron. Token coulnd't be placed.");
+        System.out.println("Something went wrong. Token coulnd't be placed.");
     }
     //display board
     display = new Display(this);
@@ -89,7 +89,11 @@ public class Board {
       }
     }
     //check neg diagonals
-
+    for(int rw = 0; rw<board.length-3; rw++) {
+      for(int cl = 0; cl<board[0].length;  cl++) {
+        
+      }
+    }
     
     if(checkWin) {
       System.out.println("Someone has won");

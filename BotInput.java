@@ -1,7 +1,7 @@
 public class BotInput {
   Board b;
   int move;
-  int[] randomColumn = {2,3,4,5,1,0,6};
+  int[] randomColumn = {3,4,5,6,2,1,7};
   int randomSpace;
 
   public BotInput(Board b){
@@ -9,8 +9,12 @@ public class BotInput {
     this.randomSpace = 0;
   }
 
-  public void getBotInput(){
+  public int getBotInput(){
     move = randomColumn[randomSpace];
     randomSpace++;
+    if(randomSpace>6) {
+      randomSpace = 0;
+    }
+    return move;
   }
 }
