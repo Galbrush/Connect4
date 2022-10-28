@@ -29,24 +29,28 @@ public class Board {
   public void placeCounter(int move, char player) {
     int cl = move -1;
     boolean counterPlaced = false;
-
-    for(int rw = board.length-1; rw >= 0; rw--) {
-      if(checkFull(cl)) {
-        System.out.println("This column is full. Please choose another column.");
-        this.placeCounter(playerInput.getPlayerInput(), player);
-        
+    //if the column is full - chose another
+    
+    if(checkFull(cl)) {
+      System.out.println("This column is full. Please choose another column.");
+      this.placeCounter(playerInput.getPlayerInput(), player);
       }
+    
+    for(int rw = board.length-1; rw >= 0; rw--) {
+      
+      //place a token on the upper most empty space of chosen column
       if(board[rw][cl] == ' ') {
         board[rw][cl] = player;
         counterPlaced = true;
         break;
       }
+
       
-      if(!counterPlaced) {
-        
-      }
     }
-  
+    //if this didn't work - show an error message
+    if(!counterPlaced) {
+        System.out.println("Something went wron. Token coulnd't be placed.");
+    }
     //display board
     display = new Display(this);
     display.displayBoard();
@@ -56,10 +60,9 @@ public class Board {
     checkWin = false;
     
     //check vertical
-    for(int cl= 0; cl<board.length; cl++) {
+    for(int cl= 0; cl<board[0].length; cl++) {
       for(int rw= 0; rw<board.length-3; rw++) {
-        if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
-          System.out.println("Someone has won");
+        if (board[rw][cl] != ' ' && board[rw][cl] == board[rw+1][cl] && board[rw+1][cl] == board[rw+2][cl] && board[rw+2][cl] == board[rw+3][cl]) {
           checkWin = true;
           return checkWin;  
         }
@@ -67,7 +70,7 @@ public class Board {
     }
     
     //check horizontal
-    for(int cl= 0; cl<board.length-3; cl++) {
+    for(int cl= 0; cl<board[0].length-3; cl++) {
       for(int rw= 0; rw<board.length; rw++) {
         if (board[rw][cl] != ' ' &&board[rw][cl] == board[rw][cl+1] && board[rw][cl+1] == board[rw][cl+2] && board[rw][cl+2] == board[rw][cl+3]) {
           checkWin = true;
@@ -77,10 +80,11 @@ public class Board {
     }
     
     //check pos diagonals
-    for(int rw = 3; rw<board.length-3;rw++) {
-      for(int cl = 3; cl<board[rw].length-3;cl++) {
+    for(int rw = 0; rw<board.length-3;rw++) {
+      for(int cl = 0; cl<board[0].length-3;cl++) {
         if(board[rw][cl] != ' ' && board[rw][cl] == board[rw+1][cl+1] && board[rw+1][cl+1] == board[rw+2][cl+2] && board[rw+2][cl+2] == board[rw+3][cl+3]) {
           checkWin = true;
+          return checkWin;
         }
       }
     }
