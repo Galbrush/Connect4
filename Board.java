@@ -98,9 +98,6 @@ public class Board {
       }
     }
     
-    if(checkWin) {
-      System.out.println("Someone has won");
-    }
     return checkWin;
   }
 

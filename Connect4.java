@@ -37,10 +37,10 @@ public class Connect4 {
 
     if(board.checkWin()) {
       int winnerID = (currentMovePlayer -1) % playersArr.length;
-      System.out.println("The winner is: " + playersArr[winnerID]);
+      display.displayWinner(playersArr[winnerID]);
     }
     if(board.checkFullAll()) {
-      System.out.println("It's a draw!");
+      display.displayDraw();
     }
     //place counter for computer
     //repeat until one letter appears 4 times next to each other

@@ -48,5 +48,12 @@ public class Display {
 		System.out.println("  1   2   3   4   5   6   7");
 	}
 
+  public void displayWinner(char player) {
+    System.out.println("The winner is " + player);
+  }
+
+  public void displayDraw() {
+    System.out.println("It's a draw!");
+  }
   //
 }
