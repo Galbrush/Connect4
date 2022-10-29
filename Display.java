@@ -8,7 +8,7 @@ public class Display {
     this.b = b;
     this.board = b.board;
   }
-  //beginning messages
+
   public void displayInstructions(){
     System.out.println("--------Welcome to Connect 4--------");
 	  System.out.println("There are 2 players: red and yellow");
@@ -19,7 +19,10 @@ public class Display {
 	  System.out.println("");
  }
 
-  //display winning message
+  public void displayInputPrompt() {
+    System.out.println("Where do you want to place your counter?");
+  }
+
   public void displayWin() {
     System.out.println("You have won!");
   }
@@ -28,10 +31,11 @@ public class Display {
     System.out.println("The computer has won! You have lost!");
   }
 
-  //display current board
+ 
   public void displayBoard() {
     
     for(int rw=0; rw<board.length; rw++){
+      
 			for(int cl=0; cl<board[rw].length; cl++){
 				if(board[rw][cl] == 'r'){
 					System.out.print("| r ");
@@ -55,5 +59,17 @@ public class Display {
   public void displayDraw() {
     System.out.println("It's a draw!");
   }
-  //
+
+  public void displayFull() {
+    System.out.println("This column is full. Please choose another column.");
+  }
+
+  public void displayTokenError() {
+    System.out.println("Something went wrong. Token coulnd't be placed.");
+  }
+
+  public void displayInvalidInput(String invalidInput) {
+    System.out.println("--- " + invalidInput + " --- is not a valid input. Please provide a valid column number.");
+  }
+  
 }

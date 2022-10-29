@@ -9,19 +9,22 @@ public class PlayerInput {
   Board b;
   Scanner scanner;
   int input;
+  Display display;
   
   public PlayerInput(Board b) {
     scanner = new Scanner(System.in);
     this.b = b;
+    this.display = new Display(b);
   }
 
   public int getPlayerInput() {
-    System.out.println("Where do you want to place your counter?");
+    display.displayInputPrompt();
     
     if(scanner.hasNextInt()) {
       move = scanner.nextInt();
     } else {
-      System.out.println("--- " + scanner.nextLine() + " --- is not a valid input. Please provide a valid column number.");
+      display.displayInvalidInput(scanner.nextLine());
+      
       getPlayerInput();
     }
     return move;

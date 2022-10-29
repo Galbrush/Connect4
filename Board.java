@@ -13,7 +13,7 @@ public class Board {
     this.col = col;
     this.board = new char[row][col];
     this.playerInput = new PlayerInput(this);
-    System.out.println("You created a new Board");
+    
     //populate board with empty chars. 
     for(int rw = 0; rw<board.length; rw++){
       for(int cl= 0; cl<board[rw].length; cl++) {
@@ -32,7 +32,7 @@ public class Board {
     //if the column is full - chose another
     
     if(checkFull(cl)) {
-      System.out.println("This column is full. Please choose another column.");
+      display.displayFull();
       this.placeCounter(playerInput.getPlayerInput(), player);
       }
     
@@ -49,7 +49,7 @@ public class Board {
     }
     //if this didn't work - show an error message
     if(!counterPlaced) {
-        System.out.println("Something went wrong. Token coulnd't be placed.");
+        display.displayTokenError();
     }
     //display board
     display = new Display(this);
