@@ -4,7 +4,7 @@ public class Connect4 {
   Board board;
   char[] playersArr = {'r', 'y'};
   char currentMovePlayer = 0;
-  Player player;
+  
   BotInput botInput;
   
   
@@ -13,7 +13,7 @@ public class Connect4 {
     this.board = new Board(6, 7);
     this.display = new Display(board);
     this.playerInput = new PlayerInput(board);
-    this.player = new Player(playersArr[currentMovePlayer]);
+    
     this.botInput = new BotInput(board);
     playConnect4();
   }
