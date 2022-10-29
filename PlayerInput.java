@@ -21,7 +21,7 @@ public class PlayerInput {
     if(scanner.hasNextInt()) {
       move = scanner.nextInt();
     } else {
-      System.out.println(scanner.nextLine() + " is not a valid input. Please provide a valid column number.");
+      System.out.println("--- " + scanner.nextLine() + " --- is not a valid input. Please provide a valid column number.");
       getPlayerInput();
     }
     return move;
