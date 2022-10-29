@@ -88,7 +88,7 @@ public class Board {
         }
       }
     }
-    //check neg diagonals
+    //check pos diagonals
     for(int rw = 3; rw<board.length; rw++) {
       for(int cl = 0; cl<board[0].length-3;  cl++) {
         if(board[rw][cl] != ' ' && board[rw][cl] == board[rw-1][cl+1] && board[rw-1][cl+1] == board[rw-2][cl+2] && board[rw-2][cl+2] == board[rw-3][cl+3]) {
