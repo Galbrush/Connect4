@@ -36,7 +36,8 @@ public class Connect4 {
     } while(!board.checkWin() || board.checkFullAll());
 
     if(board.checkWin()) {
-      System.out.println("Someone wins");
+      int winnerID = (currentMovePlayer -1) % playersArr.length;
+      System.out.println("The winner is: " + playersArr[winnerID]);
     }
     if(board.checkFullAll()) {
       System.out.println("It's a draw!");
