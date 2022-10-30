@@ -44,8 +44,6 @@ public class Board {
         counterPlaced = true;
         break;
       }
-
-      
     }
     //if this didn't work - show an error message
     if(!counterPlaced) {
@@ -88,6 +86,7 @@ public class Board {
         }
       }
     }
+    
     //check pos diagonals
     for(int rw = 3; rw<board.length; rw++) {
       for(int cl = 0; cl<board[0].length-3;  cl++) {
@@ -97,11 +96,10 @@ public class Board {
         }
       }
     }
-    
     return checkWin;
   }
 
-  public boolean checkFull(int cl) {
+  private boolean checkFull(int cl) {
     checkFull = false;
     if(board[0][cl] != ' ') {
       checkFull = true;
